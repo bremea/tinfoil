@@ -1,0 +1,13 @@
+{
+  "name": "tinfoil",
+  "author": "Jade Meadows",
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest",
+    "discord-api-types": "^0.37.23"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
