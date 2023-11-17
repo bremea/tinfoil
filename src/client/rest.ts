@@ -14,11 +14,11 @@ export default class RestClient {
     this.authorization = `Bot ${token}`;
     this.clientOptions = { ...options, ...DEFAULT_CLIENT_OPTIONS };
 
-	// add in all endpoint groups
+    // add in all endpoint groups
     this.user = new UserEndpoints(this);
   }
 
-  public async request(method: HttpMethods, endpoint: string, options?: FetchRequestInit): Promise<Response> {
+  public async request<T>(method: HttpMethods, endpoint: string, options?: FetchRequestInit): Promise<T> {
     const req = await fetch(`${this.clientOptions.url}/v${this.clientOptions.version}${endpoint}`, {
       method,
       headers: {
@@ -33,7 +33,11 @@ export default class RestClient {
       throw req;
     }
 
-    return req;
+    if (req.headers.get("Content-Type") == "application/json") {
+      return (await req.json()) as T;
+    } else {
+      return (await req.text()) as T;
+    }
   }
 }
 
