@@ -1,1 +1,3 @@
-console.log("Hello via Bun!");
+import RestClient from "./client/rest";
+
+export { RestClient };
