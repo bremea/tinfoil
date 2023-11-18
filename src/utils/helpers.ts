@@ -1,5 +1,5 @@
 export function serializeIntoQuery(data: any) {
-  if (Object.entries(data).length == 0) return "";
+  if (!data || Object.entries(data).length == 0) return "";
 
   const query = [];
   for (let p in data) {
