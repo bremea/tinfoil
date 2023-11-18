@@ -16,7 +16,7 @@ Here is an example of using the REST API:
 import { RestClient } from "tinfoil";
 
 const bot = new RestClient(process.env.BOT_TOKEN as string);
-console.log(await bot.users.me.get()) // Logs bot information
+console.log(await bot.user.me.get()) // Logs bot information
 ```
 
 ## Contributing
