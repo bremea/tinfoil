@@ -1,15 +1,14 @@
-import { Snowflake } from "discord-api-types/globals";
-import { RESTGetAPIUserResult } from "discord-api-types/rest";
+import * as ApiTypes from "discord-api-types/v10";
 import { EndpointGroup } from "../rest";
 
 export default class UserEndpoints extends EndpointGroup {
-  /**
+  /**	## Get User
    * 	Returns a user object for a given user ID. [Discord Docs](https://discord.com/developers/docs/resources/user#get-user)
    *
-   *	@param {Snowflake} id User's ID
-   *	@returns {RESTGetAPIUserResult} User data
+   *	@param {ApiTypes.Snowflake} id User's ID
+   *	@returns {Promise<ApiTypes.RESTGetAPIUserResult>} User data
    */
-  async get(id: Snowflake): Promise<RESTGetAPIUserResult> {
-    return await this.client.request<RESTGetAPIUserResult>("GET", `/users/${id}`);
+  async get(id: ApiTypes.Snowflake): Promise<ApiTypes.RESTGetAPIUserResult> {
+    return await this.client.request<ApiTypes.RESTGetAPIUserResult>("GET", `/users/${id}`);
   }
 }

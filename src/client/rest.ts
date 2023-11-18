@@ -45,6 +45,7 @@ export default class RestClient {
       method,
       headers: {
         Authorization: this.authorization,
+        "Content-Type": "application/json",
         "User-Agent": this.clientOptions.userAgent,
         ...options?.headers,
       },
