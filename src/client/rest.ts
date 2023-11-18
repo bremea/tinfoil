@@ -2,6 +2,7 @@ import { ClientOptions } from "../types/client";
 import { HttpMethods } from "../types/util";
 import { DEFAULT_CLIENT_OPTIONS } from "../utils/consts";
 import ApplicationEndpoints from "./application";
+import ApplicationRoleConnectionMetadataEndpoints from "./approleconnectionmeta";
 import UserEndpoints from "./user";
 
 /**
@@ -17,6 +18,7 @@ export default class RestClient {
   private clientOptions: ClientOptions;
 
   public application: ApplicationEndpoints;
+  public applicationRoleConnectionMetadata: ApplicationRoleConnectionMetadataEndpoints;
   public user: UserEndpoints;
 
   /**
@@ -31,6 +33,7 @@ export default class RestClient {
 
     // add in all endpoint groups
     this.application = new ApplicationEndpoints(this);
+    this.applicationRoleConnectionMetadata = new ApplicationRoleConnectionMetadataEndpoints(this);
     this.user = new UserEndpoints(this);
   }
 
