@@ -1,6 +1,7 @@
 import { ClientOptions } from "../types/client";
 import { HttpMethods } from "../types/util";
 import { DEFAULT_CLIENT_OPTIONS } from "../utils/consts";
+import ApplicationEndpoints from "./application";
 import UserEndpoints from "./user";
 
 /**
@@ -8,14 +9,18 @@ import UserEndpoints from "./user";
  * 	Client object used for interacting with Discord's REST API. [Discord API Reference](https://discord.com/developers/docs/reference)
  *
  * 	### Resources Available:
+ * 	- `application`: application endpoints
  * 	- `users`: user endpoints
  */
 export default class RestClient {
   private authorization: string;
   private clientOptions: ClientOptions;
 
-  /**
-   * 	### User Endpoints
+  /**	# Application Endpoints
+   * 	[Discord Docs](https://discord.com/developers/docs/resources/application)
+   */
+  public application: ApplicationEndpoints;
+  /**	# User Endpoints
    * 	Can be used to make operations against Discord users. [Discord Docs](https://discord.com/developers/docs/resources/user)
    */
   public user: UserEndpoints;
@@ -31,6 +36,7 @@ export default class RestClient {
     this.clientOptions = { ...options, ...DEFAULT_CLIENT_OPTIONS };
 
     // add in all endpoint groups
+    this.application = new ApplicationEndpoints(this);
     this.user = new UserEndpoints(this);
   }
 
