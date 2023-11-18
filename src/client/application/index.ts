@@ -1,6 +1,9 @@
 import * as ApiTypes from "discord-api-types/v10";
 import { EndpointGroup } from "../rest";
 
+/**	# Application Endpoints
+ * 	[Discord Docs](https://discord.com/developers/docs/resources/application)
+ */
 export default class ApplicationEndpoints extends EndpointGroup {
   /**	## Get Current Application
    * 	Returns the application object associated with the requesting bot user. [Discord Docs](https://discord.com/developers/docs/resources/application#get-current-application)

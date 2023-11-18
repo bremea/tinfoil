@@ -16,13 +16,7 @@ export default class RestClient {
   private authorization: string;
   private clientOptions: ClientOptions;
 
-  /**	# Application Endpoints
-   * 	[Discord Docs](https://discord.com/developers/docs/resources/application)
-   */
   public application: ApplicationEndpoints;
-  /**	# User Endpoints
-   * 	Can be used to make operations against Discord users. [Discord Docs](https://discord.com/developers/docs/resources/user)
-   */
   public user: UserEndpoints;
 
   /**

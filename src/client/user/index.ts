@@ -1,6 +1,9 @@
 import * as ApiTypes from "discord-api-types/v10";
 import { EndpointGroup } from "../rest";
 
+/**	# User Endpoints
+ * 	Can be used to make operations against Discord users. [Discord Docs](https://discord.com/developers/docs/resources/user)
+ */
 export default class UserEndpoints extends EndpointGroup {
   /**	## Get User
    * 	Returns a user object for a given user ID. [Discord Docs](https://discord.com/developers/docs/resources/user#get-user)
