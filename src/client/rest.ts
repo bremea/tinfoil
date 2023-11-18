@@ -2,6 +2,7 @@ import { ClientOptions } from "../types/client";
 import { HttpMethods } from "../types/util";
 import { DEFAULT_CLIENT_OPTIONS } from "../utils/consts";
 import ApplicationEndpoints from "./application";
+import GuildEndpoints from "./guild";
 import UserEndpoints from "./user";
 
 /**
@@ -17,6 +18,7 @@ export default class RestClient {
   private clientOptions: ClientOptions;
 
   public application: ApplicationEndpoints;
+  public guild: GuildEndpoints;
   public user: UserEndpoints;
 
   /**
@@ -31,6 +33,7 @@ export default class RestClient {
 
     // add in all endpoint groups
     this.application = new ApplicationEndpoints(this);
+    this.guild = new GuildEndpoints(this);
     this.user = new UserEndpoints(this);
   }
 
