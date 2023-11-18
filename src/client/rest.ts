@@ -5,6 +5,14 @@ import ApplicationEndpoints from "./application";
 import GuildEndpoints from "./guild";
 import UserEndpoints from "./user";
 
+export abstract class EndpointGroup {
+  protected client: RestClient;
+
+  constructor(client: RestClient) {
+    this.client = client;
+  }
+}
+
 /**
  * 	# Rest Client
  * 	Client object used for interacting with Discord's REST API. [Discord API Reference](https://discord.com/developers/docs/reference)
@@ -31,7 +39,7 @@ export default class RestClient {
     this.authorization = `Bot ${token}`;
     this.clientOptions = { ...options, ...DEFAULT_CLIENT_OPTIONS };
 
-    // add in all endpoint groups
+	// add in all endpoint groups
     this.application = new ApplicationEndpoints(this);
     this.guild = new GuildEndpoints(this);
     this.user = new UserEndpoints(this);
@@ -64,13 +72,5 @@ export default class RestClient {
     } else {
       return (await req.text()) as T;
     }
-  }
-}
-
-export class EndpointGroup {
-  protected client: RestClient;
-
-  constructor(client: RestClient) {
-    this.client = client;
   }
 }
