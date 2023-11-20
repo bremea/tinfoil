@@ -1,5 +1,6 @@
 import * as ApiTypes from "discord-api-types/v10";
-import RestClient, { EndpointGroup } from "../rest";
+import RestClient from "../rest";
+import EndpointGroup from "../base";
 import ApplicationRoleConnections from "./roleconnections";
 
 /**	# Application Endpoints

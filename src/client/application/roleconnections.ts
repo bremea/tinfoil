@@ -1,5 +1,5 @@
 import * as ApiTypes from "discord-api-types/v10";
-import { EndpointGroup } from "../rest";
+import EndpointGroup from "../base";
 
 /**	# Application Role Connections
  * 	[Discord Docs](https://discord.com/developers/docs/resources/application-role-connection-metadata)

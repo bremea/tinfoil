@@ -1,5 +1,5 @@
 import * as ApiTypes from "discord-api-types/v10";
-import { EndpointGroup } from "../rest";
+import EndpointGroup from "../base";
 import { serializeIntoQuery } from "../../utils/helpers";
 
 /**	# Audit Logs
