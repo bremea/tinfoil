@@ -10,3 +10,11 @@ export function serializeIntoQuery(data: any) {
 
   return "?" + query.join("&");
 }
+
+export function addAuditLogReason(reason?: string): any {
+  if (!reason) return {};
+
+  return {
+    "X-Audit-Log-Reason": reason,
+  };
+}
