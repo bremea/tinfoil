@@ -69,8 +69,8 @@ export default class GuildEndpoints extends EndpointGroup {
   /**	## List Active Guild Threads
    * 	Returns all active threads in the guild, including public and private threads. [Discord Docs](https://discord.com/developers/docs/resources/guild#list-active-guild-threads)
    *
-   * 	@param {ApiTypes.Snowflake} guildID ID of guild to delete
-   *	@returns {Promise<ApiTypes.RESTGetAPIGuildThreadsResult>}
+   * 	@param {ApiTypes.Snowflake} guildID ID of guild to fetch threads from
+   *	@returns {Promise<ApiTypes.RESTGetAPIGuildThreadsResult>} List of active threads
    */
   async listActiveThreads(guildID: ApiTypes.Snowflake): Promise<ApiTypes.RESTGetAPIGuildThreadsResult> {
     return await this.client.request<ApiTypes.RESTGetAPIGuildThreadsResult>("GET", `/guilds/${guildID}/threads/active`);
