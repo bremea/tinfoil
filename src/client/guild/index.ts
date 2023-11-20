@@ -3,6 +3,7 @@ import RestClient from "../rest";
 import EndpointGroup from "../base";
 import AuditLogEndpoints from "./auditlog";
 import GuildChannels from "./channels";
+import GuildMembers from "./members";
 import { addAuditLogReason, serializeIntoQuery } from "../../utils/helpers";
 
 /**	# Guild Endpoints
@@ -11,11 +12,13 @@ import { addAuditLogReason, serializeIntoQuery } from "../../utils/helpers";
 export default class GuildEndpoints extends EndpointGroup {
   public auditLog: AuditLogEndpoints;
   public channels: GuildChannels;
+  public members: GuildMembers;
 
   constructor(client: RestClient) {
     super(client);
     this.auditLog = new AuditLogEndpoints(client);
     this.channels = new GuildChannels(client);
+    this.members = new GuildMembers(client);
   }
 
   /**	## Create Guild
