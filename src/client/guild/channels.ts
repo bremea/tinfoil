@@ -12,7 +12,7 @@ export default class GuildChannels extends EndpointGroup {
    * 	@param {ApiTypes.Snowflake} guildID ID of guild to get channels from
    *	@returns {Promise<ApiTypes.RESTGetAPIGuildChannelsResult>}
    */
-  async get(guildID: ApiTypes.Snowflake): Promise<ApiTypes.RESTGetAPIGuildChannelsResult> {
+  async list(guildID: ApiTypes.Snowflake): Promise<ApiTypes.RESTGetAPIGuildChannelsResult> {
     return await this.client.request<ApiTypes.RESTGetAPIGuildChannelsResult>("GET", `/guilds/${guildID}/channels`);
   }
   /**	## Create Guild Channel
