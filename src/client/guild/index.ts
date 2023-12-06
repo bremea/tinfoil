@@ -6,6 +6,7 @@ import GuildChannels from "./channels";
 import GuildMembers from "./members";
 import { addAuditLogReason, serializeIntoQuery } from "../../utils/helpers";
 import GuildBans from "./bans";
+import GuildRoles from "./roles";
 
 /**	# Guild Endpoints
  * 	Guilds in Discord represent an isolated collection of users and channels, and are often referred to as "servers" in the UI. [Discord Docs](https://discord.com/developers/docs/resources/guild)
@@ -15,6 +16,7 @@ export default class GuildEndpoints extends EndpointGroup {
   public channels: GuildChannels;
   public members: GuildMembers;
   public bans: GuildBans;
+  public roles: GuildRoles;
 
   constructor(client: RestClient) {
     super(client);
@@ -22,6 +24,7 @@ export default class GuildEndpoints extends EndpointGroup {
     this.channels = new GuildChannels(client);
     this.members = new GuildMembers(client);
     this.bans = new GuildBans(client);
+    this.roles = new GuildRoles(client);
   }
 
   /**	## Create Guild
