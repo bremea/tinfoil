@@ -4,9 +4,9 @@ import EndpointGroup from "../base";
 import AuditLogEndpoints from "./auditlog";
 import GuildChannels from "./channels";
 import GuildMembers from "./members";
-import { addAuditLogReason, serializeIntoQuery } from "../../utils/helpers";
 import GuildBans from "./bans";
 import GuildRoles from "./roles";
+import { addAuditLogReason, serializeIntoQuery } from "../../utils/helpers";
 
 /**	# Guild Endpoints
  * 	Guilds in Discord represent an isolated collection of users and channels, and are often referred to as "servers" in the UI. [Discord Docs](https://discord.com/developers/docs/resources/guild)
