@@ -21,7 +21,7 @@ export default class GuildChannels extends EndpointGroup {
    * 	@param {ApiTypes.Snowflake} guildID ID of guild to create channel in
    *    @param {ApiTypes.RESTPostAPIGuildChannelJSONBody} options Channel options
    *    @param {string?} reason Optional reason to include in the guild's audit log
-   *	@returns {Promise<ApiTypes.RESTPostAPIGuildChannelResult>}
+   *	@returns {Promise<ApiTypes.RESTPostAPIGuildChannelResult>} New channel
    */
   async create(guildID: ApiTypes.Snowflake, options: ApiTypes.RESTPostAPIGuildChannelJSONBody, reason?: string): Promise<ApiTypes.RESTPostAPIGuildChannelResult> {
     return await this.client.request<ApiTypes.RESTPostAPIGuildChannelResult>("POST", `/guilds/${guildID}/channels`, { body: JSON.stringify(options), headers: addAuditLogReason(reason) });
