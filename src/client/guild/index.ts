@@ -84,4 +84,15 @@ export default class GuildEndpoints extends EndpointGroup {
   async listActiveThreads(guildID: ApiTypes.Snowflake): Promise<ApiTypes.RESTGetAPIGuildThreadsResult> {
     return await this.client.request<ApiTypes.RESTGetAPIGuildThreadsResult>("GET", `/guilds/${guildID}/threads/active`);
   }
+  /**	## Modify Guild MFA Level
+   * 	Modify a guild's MFA level. Requires guild ownership. [Discord Docs](https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level)
+   *
+   * 	@param {ApiTypes.Snowflake} guildID ID of guild to modify
+   * 	@param {ApiTypes.RESTPostAPIGuildsMFAJSONBody} options MFA options
+   *    @param {string?} reason Optional reason to include in the guild's audit log
+   *	@returns {Promise<ApiTypes.RESTPostAPIGuildsMFAResult>} List of active threads
+   */
+  async modifyMFALevel(guildID: ApiTypes.Snowflake, options: ApiTypes.RESTPostAPIGuildsMFAResult, reason: string): Promise<ApiTypes.RESTPostAPIGuildsMFAResult> {
+    return await this.client.request<ApiTypes.RESTPostAPIGuildsMFAResult>("POST", `/guilds/${guildID}/mfa`, { body: JSON.stringify(options), headers: addAuditLogReason(reason) });
+  }
 }
