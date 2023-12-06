@@ -32,7 +32,7 @@ export default class GuildRoles extends EndpointGroup {
    * 	@param {ApiTypes.Snowflake} guildID ID of guild to modify role positions in
    *    @param {ApiTypes.RESTPatchAPIGuildRolePositionsJSONBody} options Array of positions
    *    @param {string?} reason Optional reason to include in the guild's audit log
-   *	@returns {Promise<ApiTypes.RESTPatchAPIGuildRolePositionsResult>}
+   *	@returns {Promise<ApiTypes.RESTPatchAPIGuildRolePositionsResult>} New positions
    */
   async modifyPositions(guildID: ApiTypes.Snowflake, options: ApiTypes.RESTPatchAPIGuildRolePositionsJSONBody, reason?: string): Promise<ApiTypes.RESTPatchAPIGuildRolePositionsResult> {
     return await this.client.request<ApiTypes.RESTPatchAPIGuildRolePositionsResult>("PATCH", `/guilds/${guildID}/roles`, { body: JSON.stringify(options), headers: addAuditLogReason(reason) });
@@ -44,9 +44,20 @@ export default class GuildRoles extends EndpointGroup {
    * 	@param {ApiTypes.Snowflake} roleID ID of role to modify
    *    @param {ApiTypes.RESTPatchAPIGuildRoleJSONBody} options Role options
    *    @param {string?} reason Optional reason to include in the guild's audit log
-   *	@returns {Promise<ApiTypes.RESTPatchAPIGuildRoleResult>}
+   *	@returns {Promise<ApiTypes.RESTPatchAPIGuildRoleResult>} Updated role
    */
   async modify(guildID: ApiTypes.Snowflake, roleID: ApiTypes.Snowflake, options: ApiTypes.RESTPatchAPIGuildRolePositionsJSONBody, reason?: string): Promise<ApiTypes.RESTPatchAPIGuildRoleResult> {
     return await this.client.request<ApiTypes.RESTPatchAPIGuildRoleResult>("PATCH", `/guilds/${guildID}/roles/${roleID}`, { body: JSON.stringify(options), headers: addAuditLogReason(reason) });
+  }
+  /**	## Delete Guild Role
+   * 	Delete a guild role. Requires the `MANAGE_ROLES` permission. [Discord Docs](https://discord.com/developers/docs/resources/guild#delete-guild-role)
+   *
+   * 	@param {ApiTypes.Snowflake} guildID ID of guild to delete role in
+   * 	@param {ApiTypes.Snowflake} roleID ID of role to delete
+   *    @param {string?} reason Optional reason to include in the guild's audit log
+   *	@returns {Promise<ApiTypes.RESTDeleteAPIGuildRoleResult>}
+   */
+  async delete(guildID: ApiTypes.Snowflake, roleID: ApiTypes.Snowflake, reason?: string): Promise<ApiTypes.RESTDeleteAPIGuildRoleResult> {
+    return await this.client.request<ApiTypes.RESTDeleteAPIGuildRoleResult>("DELETE", `/guilds/${guildID}/roles/${roleID}`, { headers: addAuditLogReason(reason) });
   }
 }
