@@ -6,6 +6,7 @@ import GuildChannels from "./channels";
 import GuildMembers from "./members";
 import GuildBans from "./bans";
 import GuildRoles from "./roles";
+import GuildPrune from "./prune";
 import { addAuditLogReason, serializeIntoQuery } from "../../utils/helpers";
 
 /**	# Guild Endpoints
@@ -17,6 +18,7 @@ export default class GuildEndpoints extends EndpointGroup {
   public members: GuildMembers;
   public bans: GuildBans;
   public roles: GuildRoles;
+  public prune: GuildPrune;
 
   constructor(client: RestClient) {
     super(client);
@@ -25,6 +27,7 @@ export default class GuildEndpoints extends EndpointGroup {
     this.members = new GuildMembers(client);
     this.bans = new GuildBans(client);
     this.roles = new GuildRoles(client);
+    this.prune = new GuildPrune(client);
   }
 
   /**	## Create Guild
