@@ -1,7 +1,9 @@
 {
   "name": "tinfoil",
-  "author": "Jade Meadows",
-  "module": "src/index.ts",
+  "description": "Unopinionated zero-dep Discord API wrapper for Bun",
+  "version": "0.1.0",
+  "author": "Jade Meadows <jade@bremea.com>",
+  "license": "MIT",
   "type": "module",
   "devDependencies": {
     "bun-types": "latest",
@@ -9,5 +11,9 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/bremea/tinfoil/issues"
+  },
+  "homepage": "https://github.com/bremea/tinfoil"
 }
