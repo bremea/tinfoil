@@ -98,4 +98,13 @@ export default class GuildEndpoints extends EndpointGroup {
   async modifyMFALevel(guildID: ApiTypes.Snowflake, options: ApiTypes.RESTPostAPIGuildsMFAResult, reason: string): Promise<ApiTypes.RESTPostAPIGuildsMFAResult> {
     return await this.client.request<ApiTypes.RESTPostAPIGuildsMFAResult>("POST", `/guilds/${guildID}/mfa`, { body: JSON.stringify(options), headers: addAuditLogReason(reason) });
   }
+  /**	## Get Voice Regions
+   * 	Returns a list of voice region objects for the guild. [Discord Docs](https://discord.com/developers/docs/resources/guild#get-guild-voice-regions)
+   *
+   * 	@param {ApiTypes.Snowflake} guildID ID of guild to get voice regions from
+   *	@returns {Promise<ApiTypes.RESTGetAPIGuildVoiceRegionsResult>} List of voice regions
+   */
+  async getVoiceRegions(guildID: ApiTypes.Snowflake): Promise<ApiTypes.RESTGetAPIGuildVoiceRegionsResult> {
+    return await this.client.request<ApiTypes.RESTGetAPIGuildVoiceRegionsResult>("GET", `/guilds/${guildID}/regions`);
+  }
 }
